@@ -666,26 +666,25 @@ public strictfp interface RobotController {
     // **************************************
 
     /**
-     * Tests whether this robot can envision an anomaly centered at the robot's location.
+     * Tests whether this robot can destabilize the selected location
      * 
-     * Checks that the robot is a sage, and there are no cooldown turns remaining.
-     *
-     * @param anomaly the type of anomaly being queried
-     * @return whether it is possible to envision an anomaly centered at the robots location
-     *
-     * @battlecode.doc.costlymethod
+     * Checks that the robot is a destabilzier, that there are no cooldown turns remaining,
+     * and that the targeted location is within range
+     * 
+     * @param loc the target location to destabilize
      */
-    boolean canEnvision(AnomalyType anomaly);
+    boolean canDestabilize(MapLocation loc);
 
     /** 
-     * Envision an anomaly centered at the robot's location.
+     * Destabilizes the target location, slowing robots in the surrounding area and dealing
+     * damage to enemies after a few turns
      *
-     * @param anomaly the type of anomaly to envision
-     * @throws GameActionException if conditions for envisioning are not satisfied
+     * @param loc the target location to destabilize
+     * @throws GameActionException if conditions for destabilizing are not satisfied
      *
      * @battlecode.doc.costlymethod
      */
-    void envision(AnomalyType anomaly) throws GameActionException;
+    void destabilize(MapLocation loc) throws GameActionException;
 
    // ***********************************
     // ******** BOOSTERS METHODS *********
